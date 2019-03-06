@@ -1,0 +1,30 @@
+{
+  "id": "56ca2f52-a39b-435d-8086-f04e711f1ac6",
+  "name": "DXC Event Handling",
+  "publisher": "DXC",
+  "brief": "",
+  "description": "",
+  "version": "1.0.0.0",
+  "compatibilityId": "1.0.0.0",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "capabilities": [],
+  "dependencies": [
+    {
+      "appId": "40a945a0-6cf7-458c-9772-be132ff01600",
+      "name": "DXC Obrien Project",
+      "publisher": "DXC",   
+      "version": "1.0.0.0"
+    }
+  ],
+  "screenshots": [],
+  "platform": "11.0.0.0",
+  "application": "11.0.0.0",
+  "idRange": {
+    "from": 50000,
+    "to": 50149
+  }
+}
