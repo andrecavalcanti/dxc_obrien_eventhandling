@@ -4,9 +4,9 @@
         {
             "type": "al",
             "request": "launch",            
-            "name": "Your own server",
-            "server": "http://localhost",                    
-            "serverInstance": "DynamicsNAV110",
+            "name": "Your own server",            
+            "server": "http://172.26.89.81",                      
+            "serverInstance": "NAV",
             "port"  : 7049, 
             "authentication": "Windows",
             //"tenant": "default",
