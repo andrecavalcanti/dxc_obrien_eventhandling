@@ -42,4 +42,17 @@ codeunit 50003 "DXCEventHandling"
         ReturnRcptHeader."DXC Weights and Dims" := SalesHeader."DXC Weights and Dims";         
 
     end;
+
+    [EventSubscriber(ObjectType::Table, 36, 'OnBeforeInsertEvent', '', false, false)]
+    local procedure HandleAfterInsertOnSalesHeader(var Rec : Record "Sales Header";RunTrigger : Boolean);
+    var
+        Customer : Record Customer;
+    begin
+
+        Customer.GET(Rec."Sell-to Customer No.");
+        
+        Rec."DXC Address 3" := Customer."DXC Address 3";
+    end;   
+ 
+    
 }
