@@ -52,6 +52,17 @@ codeunit 50003 "DXCEventHandling"
         Customer.GET(Rec."Sell-to Customer No.");
         Rec."DXC Address 3" := Customer."DXC Address 3";
     end;
+
+    [EventSubscriber(ObjectType::Table, 36, 'OnAfterUpdateShipToAddress', '', false, false)]
+    local procedure HandleAfterUpdateShipToAddressOnSalesHeader(var SalesHeader : Record "Sales Header");
+    var
+        ShipToAddress : Record "Ship-to Address";
+    begin
+        if (SalesHeader."Sell-to Customer No." <> '') and (SalesHeader."Ship-to Code" <> '') then begin
+          ShipToAddress.GET(SalesHeader."Sell-to Customer No.",SalesHeader."Ship-to Code");
+          SalesHeader."DXC Ship-to Address 3" := ShipToAddress."DXC Address 3";
+        end;
+    end;
  
     
 }
