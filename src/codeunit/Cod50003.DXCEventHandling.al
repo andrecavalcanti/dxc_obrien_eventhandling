@@ -72,7 +72,7 @@ codeunit 50003 "DXCEventHandling"
         TariffNumber : Record "Tariff Number";
     begin
         if TariffNumber.Get(Rec."No.") then
-            Rec."DXC Tarrif Description" := TariffNumber.Description;   
+            Rec."DXC Tariff Description" := TariffNumber.Description;   
         
     end;
     // << AOB-75

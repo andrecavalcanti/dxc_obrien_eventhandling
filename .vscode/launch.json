@@ -22,8 +22,8 @@
             // "authentication": "Windows",            
             //"tenant": "default",
             //"startupObjectId": 22,
-           "schemaUpdateMode": "Synchronize"
-            //"schemaUpdateMode": "Recreate"
+        //    "schemaUpdateMode": "Synchronize"
+            "schemaUpdateMode": "Recreate"
             //"startupObjectType": "Page",
             //"breakOnError": true
         }
