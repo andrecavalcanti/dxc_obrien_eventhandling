@@ -62,7 +62,19 @@ codeunit 50003 "DXCEventHandling"
           ShipToAddress.GET(Rec."Sell-to Customer No.",Rec."Ship-to Code");
           Rec."DXC Ship-to Address 3" := ShipToAddress."DXC Address 3";
         end;
+    end;    
+
+    //---T37---
+    // >> AOB-75
+    [EventSubscriber(ObjectType::Table, 37, 'OnAfterValidateEvent', 'No.', false, false)]
+    local procedure HandleAfterValidateOnNoOnSalesLine(var Rec : Record "Sales Line"; var xRec : Record "Sales Line";CurrFieldNo : Integer)
+    var 
+        TariffNumber : Record "Tariff Number";
+    begin
+        if TariffNumber.Get(Rec."No.") then
+            Rec."DXC Tarrif Description" := TariffNumber.Description;   
+        
     end;
- 
+    // << AOB-75
     
 }

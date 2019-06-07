@@ -18,7 +18,13 @@
       "name": "DXC Obrien Project",
       "publisher": "DXC",   
       "version": "1.0.0.0"
-    }
+    },
+    {
+      "appId": "2f4fad6c-d90a-46cd-8e51-52986bcb55db",
+      "name": "DXC Misc Fields Page Update",
+      "publisher": "DXC",   
+      "version": "1.0.0.0"
+    }    
   ],
   "screenshots": [],
   "platform": "11.0.0.0",
