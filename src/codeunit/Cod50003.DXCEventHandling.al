@@ -76,5 +76,22 @@ codeunit 50003 "DXCEventHandling"
         
     end;
     // << AOB-75
+
+    // >> AOB-19
+    [EventSubscriber(ObjectType::Codeunit, 414, 'OnAfterReopenSalesDoc', '', false, false)]
+    local procedure HandleAfterReopenSalesDocOnReleaseSalesDocument(var SalesHeader : Record "Sales Header");
+    var
+        ArchiveManagement : Codeunit ArchiveManagement;
+    begin
+
+        if (SalesHeader."Document Type" <> SalesHeader."Document Type"::Order) then
+          exit;
+
+        ArchiveManagement.AutoArchiveSalesDocument(SalesHeader);
+    end;
+
+    // << AOB-19
+
+
     
 }
