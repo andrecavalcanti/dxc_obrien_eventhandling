@@ -110,27 +110,27 @@ codeunit 50003 "DXCEventHandling"
           DATABASE::Customer:
             begin
               RecRef.SETTABLE(Cust);
-              Sender.SetAddr3(Cust.Name);
+              Sender.SetAddr3(Cust."DXC Address 3");
             end;
           DATABASE::"Sales Header":
             begin
               RecRef.SETTABLE(SalesHeader);
-              Sender.SetAddr3(SalesHeader."Bill-to Name");
+              Sender.SetAddr3(SalesHeader."DXC Address 3");
             end;
           DATABASE::"Sales Shipment Header":
             begin
               RecRef.SETTABLE(SalesShipHeader);
-              Sender.SetAddr3(SalesShipHeader."Bill-to Name");
+              Sender.SetAddr3(SalesShipHeader."DXC Address 3");
             end;
           DATABASE::"Sales Invoice Header":
             begin
               RecRef.SETTABLE(SalesInvHeader);
-              Sender.SetAddr3(SalesInvHeader."Bill-to Name");
+              Sender.SetAddr3(SalesInvHeader."DXC Address 3");
             end;
           DATABASE::"Sales Cr.Memo Header":
             begin
               RecRef.SETTABLE(SalesCrMemoHeader);
-              Sender.SetAddr3(SalesCrMemoHeader."Bill-to Name");
+              Sender.SetAddr3(SalesCrMemoHeader."DXC Address 3");
             end;
         end;
     end;
