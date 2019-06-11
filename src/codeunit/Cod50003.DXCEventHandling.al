@@ -91,7 +91,50 @@ codeunit 50003 "DXCEventHandling"
     end;
 
     // << AOB-19
+    // >> AOB-11
+     [EventSubscriber(ObjectType::Codeunit, 365, 'DXCOnBeforeFormatAddress', '', false, false)]
+    local procedure HandleDXCOnBeforeFormatAddress(var Sender : Codeunit "Format Address";RecVar : Variant);
+    var
+        DataTypeManagement : Codeunit "Data Type Management";
+        RecRef : RecordRef;
+        Cust : Record Customer;
+        SalesHeader : Record "Sales Header";
+        SalesInvHeader : Record "Sales Invoice Header";
+        SalesShipHeader : Record "Sales Shipment Header";
+        SalesCrMemoHeader : Record "Sales Cr.Memo Header";
+    begin
 
+        DataTypeManagement.GetRecordRef(RecVar,RecRef);
+
+        case RecRef.NUMBER of
+          DATABASE::Customer:
+            begin
+              RecRef.SETTABLE(Cust);
+              Sender.SetAddr3(Cust.Name);
+            end;
+          DATABASE::"Sales Header":
+            begin
+              RecRef.SETTABLE(SalesHeader);
+              Sender.SetAddr3(SalesHeader."Bill-to Name");
+            end;
+          DATABASE::"Sales Shipment Header":
+            begin
+              RecRef.SETTABLE(SalesShipHeader);
+              Sender.SetAddr3(SalesShipHeader."Bill-to Name");
+            end;
+          DATABASE::"Sales Invoice Header":
+            begin
+              RecRef.SETTABLE(SalesInvHeader);
+              Sender.SetAddr3(SalesInvHeader."Bill-to Name");
+            end;
+          DATABASE::"Sales Cr.Memo Header":
+            begin
+              RecRef.SETTABLE(SalesCrMemoHeader);
+              Sender.SetAddr3(SalesCrMemoHeader."Bill-to Name");
+            end;
+        end;
+    end;
+    // << AOB-11
 
     
 }

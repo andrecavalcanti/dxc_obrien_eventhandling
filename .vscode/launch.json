@@ -6,7 +6,7 @@
             "request": "launch",            
             "name": "Your own server",
             // ---- Docker---
-            "server": "http://172.17.191.139", 
+            "server": "http://172.25.130.195", 
             "serverInstance": "NAV",                   
             "port"  : 7049,
             "authentication":"UserPassword",   
@@ -22,8 +22,8 @@
             // "authentication": "Windows",            
             //"tenant": "default",
             //"startupObjectId": 22,
-        //    "schemaUpdateMode": "Synchronize"
-            "schemaUpdateMode": "Recreate"
+           "schemaUpdateMode": "Synchronize"
+            // "schemaUpdateMode": "Recreate"
             //"startupObjectType": "Page",
             //"breakOnError": true
         }
