@@ -136,5 +136,15 @@ codeunit 50003 "DXCEventHandling"
     end;
     // << AOB-11
 
+    // >> AOB-31
+    [EventSubscriber(ObjectType::Report, Report::"DC OB  Letter Port Logo Left", 'DXCOnAfterCopyLoop', '', false, false)]
+    local procedure HandleDXCOnAfterCopyLoopOnDCOBLetterPortLogoLeft(var CompanyInfo :Record "Company Information")
+    
+    begin
+      CompanyInfo.CalcFields("DXC Logo");
+      CompanyInfo.Picture := CompanyInfo."DXC Logo";
+    end;
+    // << AOB-31
+
     
 }
