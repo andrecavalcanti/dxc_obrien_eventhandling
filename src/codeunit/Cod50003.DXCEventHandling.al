@@ -93,7 +93,7 @@ codeunit 50003 "DXCEventHandling"
     // << AOB-19
     // >> AOB-11
      [EventSubscriber(ObjectType::Codeunit, 365, 'DXCOnBeforeFormatAddress', '', false, false)]
-    local procedure HandleDXCOnBeforeFormatAddress(var Sender : Codeunit "Format Address";RecVar : Variant);
+    local procedure HandleDXCOnBeforeFormatAddress(var Sender : Codeunit "Format Address";RecVar : Variant; Code : Code[10]);
     var
         DataTypeManagement : Codeunit "Data Type Management";
         RecRef : RecordRef;
@@ -115,22 +115,74 @@ codeunit 50003 "DXCEventHandling"
           DATABASE::"Sales Header":
             begin
               RecRef.SETTABLE(SalesHeader);
-              Sender.SetAddr3(SalesHeader."DXC Address 3");
+              case Code of 
+                'SELLTO':
+                  begin                    
+                    Sender.SetAddr3(SalesHeader."DXC Address 3");
+                  end;
+                'SHIPTO':
+                  begin                    
+                    Sender.SetAddr3(SalesHeader."DXC Ship-to Address 3");
+                  end; 
+                'BILLTO':
+                  begin                    
+                    Sender.SetAddr3(SalesHeader."DXC Address 3");
+                  end;  
+              end;             
             end;
           DATABASE::"Sales Shipment Header":
             begin
-              RecRef.SETTABLE(SalesShipHeader);
-              Sender.SetAddr3(SalesShipHeader."DXC Address 3");
+              RecRef.SETTABLE(SalesShipHeader);              
+              case Code of 
+                'SELLTO':
+                  begin                    
+                    Sender.SetAddr3(SalesShipHeader."DXC Address 3");
+                  end;
+                'SHIPTO':
+                  begin                    
+                    Sender.SetAddr3(SalesShipHeader."DXC Address 3");
+                  end; 
+                'BILLTO':
+                  begin                    
+                    Sender.SetAddr3(SalesShipHeader."DXC Address 3");
+                  end;  
+              end;           
             end;
           DATABASE::"Sales Invoice Header":
             begin
-              RecRef.SETTABLE(SalesInvHeader);
-              Sender.SetAddr3(SalesInvHeader."DXC Address 3");
+              RecRef.SETTABLE(SalesInvHeader);              
+              case Code of 
+                'SELLTO':
+                  begin                    
+                    Sender.SetAddr3(SalesInvHeader."DXC Address 3");
+                  end;
+                'SHIPTO':
+                  begin                    
+                    Sender.SetAddr3(SalesInvHeader."DXC Address 3");
+                  end; 
+                'BILLTO':
+                  begin                    
+                    Sender.SetAddr3(SalesInvHeader."DXC Address 3");
+                  end;  
+              end;           
             end;
           DATABASE::"Sales Cr.Memo Header":
             begin
-              RecRef.SETTABLE(SalesCrMemoHeader);
-              Sender.SetAddr3(SalesCrMemoHeader."DXC Address 3");
+              RecRef.SETTABLE(SalesCrMemoHeader);              
+              case Code of 
+                'SELLTO':
+                  begin                    
+                    Sender.SetAddr3(SalesCrMemoHeader."DXC Address 3");
+                  end;
+                'SHIPTO':
+                  begin                    
+                    Sender.SetAddr3(SalesCrMemoHeader."DXC Address 3");
+                  end; 
+                'BILLTO':
+                  begin                    
+                    Sender.SetAddr3(SalesCrMemoHeader."DXC Address 3");
+                  end;  
+              end;           
             end;
         end;
     end;
