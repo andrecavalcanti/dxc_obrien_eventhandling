@@ -70,9 +70,13 @@ codeunit 50003 "DXCEventHandling"
     local procedure HandleAfterValidateOnNoOnSalesLine(var Rec : Record "Sales Line"; var xRec : Record "Sales Line";CurrFieldNo : Integer)
     var 
         TariffNumber : Record "Tariff Number";
+        Item : Record Item;
     begin
-        if TariffNumber.Get(Rec."No.") then
-            Rec."DXC Tariff Description" := TariffNumber.Description;   
+        if Rec.Type <> Rec.Type::Item then
+          exit;
+        if Item.Get(Rec."No.") then
+          if TariffNumber.Get(Item."Tariff No.") then
+              Rec."DXC Tariff Description" := TariffNumber.Description;   
         
     end;
     // << AOB-75
