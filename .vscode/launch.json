@@ -6,15 +6,15 @@
             "request": "launch",            
             "name": "Your own server",
             // ---- Docker---
-            "server": "http://OB2018CU8NAPROD", 
-            "serverInstance": "NAV",                   
-            "port"  : 7049,
-            "authentication":"UserPassword",   
+            // "server": "http://OB2018CU8NAPROD", 
+            // "serverInstance": "NAV",                   
+            // "port"  : 7049,
+            // "authentication":"UserPassword",   
             // --- DEV ---         
-            // "server": "http://172.19.2.41",                    
-            // "serverInstance": "TPM-DEV",
-            // "port"  : 7059,
-            // "authentication": "Windows",   
+            "server": "http://10.2.16.204",                    
+            "serverInstance": "TPM-NAV-DEV",
+            "port"  : 9049,
+            "authentication": "Windows",   
             // --- TEST ---
             // "server": "http://172.19.2.41", 
             //  "serverInstance": "DynamicsNAV110",         

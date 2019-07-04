@@ -202,5 +202,23 @@ codeunit 50003 "DXCEventHandling"
     end;
     // << AOB-31
 
+
+     // >> AOB-11
+    [EventSubscriber(ObjectType::Table, 36, 'OnAfterCopyShipToCustomerAddressFieldsFromCustomer', '', false, false)]
+    local procedure HandleAfterCopyShipToCustomerAddressFieldsFromCustomerOnSalesHeader(var SalesHeader : Record "Sales Header";var SellToCustomer : Record Customer);
+            
+    begin
+      SalesHeader."DXC Ship-to Address 3" := SellToCustomer."DXC Address 3";
+    end;
+
+    [EventSubscriber(ObjectType::Table, 36, 'OnAfterCopySellToAddressToShipToAddress', '', false, false)]
+    local procedure HandleOnAfterCopySellToAddressToShipToAddressOnSalesHeader(var SalesHeader : Record "Sales Header");
+            
+    begin
+      SalesHeader."DXC Ship-to Address 3" := SalesHeader."DXC Address 3";
+    end;
+
+    // << AOB-11
+
     
 }
